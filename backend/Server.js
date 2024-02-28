@@ -1,0 +1,11 @@
+const express=require("express")
+const cors = require("cors")
+const connectdb = require("./configuration/Config")
+const userrouter = require("./router/Router")
+const app = express()
+app.use(express.json())
+const port=9000
+connectdb()
+app.use(cors({origin:"http://localhost:3000"}))
+app.use("/user",userrouter)
+app.listen(port,console.log("server is running"))
